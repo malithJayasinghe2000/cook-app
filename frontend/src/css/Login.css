@@ -1,0 +1,94 @@
+/* Login.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #f6e4e72c;
+  }
+  
+  .formContainer {
+    width: 350px;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .logo {
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+    background-image: linear-gradient(to right, orange, #ff0066);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    width: 100%;
+  }
+  
+  .inputGroup {
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff0066;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .errorMessage {
+    color: #ff0066;
+    font-size: 12px;
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    display: none; /* Set to display when there's an error */
+  }
+  
+  .errorText {
+    color: #ff0066;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .signupText {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .signupLink {
+    color: #ff0066;
+    text-decoration: none;
+  }
+  
