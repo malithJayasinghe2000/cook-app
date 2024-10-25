@@ -64,7 +64,7 @@ exports.login = async (req, res) => {
     // Set the token in an HTTP-only cookie
     res.cookie('token', token, {
       httpOnly: true, // Cannot be accessed by JavaScript
-      secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
+      secure: true, // Only send over HTTPS in production
       sameSite: 'None', // CSRF protection
       maxAge: 3600000, // 1 hour (in milliseconds)
     });

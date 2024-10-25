@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   // Function to handle logout
   const logout = async () => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/logout`, {}, { withCredentials: true });
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/logout`, {}, { withCredentials: true });
 
       if (response.data.success) {
         setIsAuthenticated(false);

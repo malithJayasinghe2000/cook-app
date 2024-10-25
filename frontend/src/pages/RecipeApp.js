@@ -19,7 +19,7 @@ const RecipeApp = () => {
     const fetchCategories = async () => {
       setLoading(true); 
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/meals/categories`);
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/meals/categories`);
 
         setCategories(res.data.data);
         if (res.data.data.length > 0) {
@@ -39,7 +39,7 @@ const RecipeApp = () => {
       const fetchRecipes = async () => {
         setLoading(true); 
         try {
-          const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/meals/recipes/${selectedCategory}`);
+          const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/meals/recipes/${selectedCategory}`);
           setRecipes(res.data.data);
         } catch (err) {
           console.error('Error fetching recipes:', err);
@@ -55,7 +55,7 @@ const RecipeApp = () => {
     const fetchFavorites = async () => {
       setLoading(true); // Start loading
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/user/favorites`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/user/favorites`, {
           withCredentials: true,
         });
         setFavorites(res.data.favorites.map(fav => fav.idMeal));
@@ -87,7 +87,7 @@ const RecipeApp = () => {
   
     if (isFavorite(idMeal)) {
       try {
-        const res = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/user/remove-favorites`, {
+        const res = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/user/remove-favorites`, {
           data: { idMeal },
           withCredentials: true
         });
@@ -99,7 +99,7 @@ const RecipeApp = () => {
       }
     } else {
       try {
-        const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/add-favorites`, { idMeal }, { withCredentials: true });
+        const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/user/add-favorites`, { idMeal }, { withCredentials: true });
         if (res.data.success) {
           setFavorites((prev) => [...prev, idMeal]);
         }
@@ -114,7 +114,7 @@ const RecipeApp = () => {
 
   const fetchMealDetails = async (idMeal) => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/meals/recipes/details/${idMeal}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/meals/recipes/details/${idMeal}`);
       setSelectedMeal(res.data.data);
       setModalOpen(true);
     } catch (err) {
