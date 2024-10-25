@@ -55,7 +55,7 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/login`, formData, { withCredentials: true });
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, formData, { withCredentials: true });
       console.log(res.data); // Handle success (e.g., redirect to dashboard)
       login(); 
       setError('');

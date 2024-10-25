@@ -18,7 +18,7 @@ const Favorites = () => {
     const fetchFavorites = async () => {
       setLoading(true); 
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/user/favorites`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/user/favorites`, {
           withCredentials: true,
         });
         setFavorites(res.data.favorites);
@@ -62,7 +62,7 @@ const Favorites = () => {
 
   const fetchMealDetails = async (idMeal) => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/meals/recipes/details/${idMeal}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/meals/recipes/details/${idMeal}`);
       return res.data.data;
     } catch (err) {
       console.error('Error fetching meal details:', err);
@@ -81,7 +81,7 @@ const Favorites = () => {
       cardElement.classList.add('fade-out'); 
       
       setTimeout(async () => {
-        const res = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/user/remove-favorites`, {
+        const res = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/user/remove-favorites`, {
           data: { idMeal },
           withCredentials: true,
         });
