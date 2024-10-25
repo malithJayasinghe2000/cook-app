@@ -9,8 +9,8 @@ const Login = () => {
     email: '',
     password: '',
   });
-  const [error, setError] = useState(''); // State to hold error messages
-  const { login } = useAuth(); // Use the login function from context
+  const [error, setError] = useState(''); 
+  const { login } = useAuth(); 
   const { email, password } = formData;
   const navigate = useNavigate();
 
@@ -19,10 +19,8 @@ const Login = () => {
   };
 
   const validateForm = () => {
-    // Clear previous errors
     setError('');
 
-    // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) {
       setError('Email is required.');
@@ -33,7 +31,6 @@ const Login = () => {
       return false;
     }
 
-    // Password validation
     if (!password) {
       setError('Password is required.');
       return false;
@@ -43,26 +40,25 @@ const Login = () => {
       return false;
     }
 
-    return true; // Form is valid
+    return true; 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate form before submission
     if (!validateForm()) {
-      return; // Exit if form is not valid
+      return; 
     }
 
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/login`, formData, { withCredentials: true });
-      console.log(res.data); // Handle success (e.g., redirect to dashboard)
+      console.log(res.data); 
       login(); 
       setError('');
       navigate('/');
     } catch (err) {
       console.error(err.response.data);
-      setError('Your password or username is incorrect'); // Set the error message
+      setError('Your password or username is incorrect');
     }
   };
 
@@ -100,7 +96,7 @@ const Login = () => {
           <button type="submit" className="button">
             SIGN IN
           </button>
-          {error && <small className="errorText">{error}</small>} {/* Conditionally render error message */}
+          {error && <small className="errorText">{error}</small>}
         </form>
         <p className="signupText">
           Don't have an account? <a href="/register" className="signupLink">Create an account</a>

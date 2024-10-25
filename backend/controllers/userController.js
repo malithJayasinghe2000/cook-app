@@ -1,10 +1,9 @@
-// controllers/userController.js
-const User = require('../models/User'); // Assuming User model is in the models directory
+const User = require('../models/User'); 
 
 // Add a recipe to favorites
 exports.addFavoriteRecipe = async (req, res) => {
-    const { idMeal } = req.body; // Get the idMeal from the request body
-    const userId = req.user.id; // Assuming you're using JWT and req.user is set from the middleware
+    const { idMeal } = req.body;
+    const userId = req.user.id; 
 
     try {
         const user = await User.findById(userId);
@@ -12,7 +11,6 @@ exports.addFavoriteRecipe = async (req, res) => {
             return res.status(404).json({ success: false, message: 'User not found' });
         }
 
-        // Check if the recipe is already in favorites
         if (user.favorites.some(fav => fav.idMeal === idMeal)) {
             return res.status(400).json({ success: false, message: 'Recipe is already in favorites' });
         }
@@ -29,8 +27,8 @@ exports.addFavoriteRecipe = async (req, res) => {
 
 // Remove a recipe from favorites
 exports.removeFavoriteRecipe = async (req, res) => {
-    const { idMeal } = req.body; // Get the idMeal from the request body
-    const userId = req.user.id; // Assuming you're using JWT and req.user is set from the middleware
+    const { idMeal } = req.body; 
+    const userId = req.user.id;
 
     try {
         const user = await User.findById(userId);
@@ -50,7 +48,7 @@ exports.removeFavoriteRecipe = async (req, res) => {
 
 // Get favorite recipes
 exports.getFavoriteRecipes = async (req, res) => {
-    const userId = req.user.id; // Assuming you're using JWT and req.user is set from the middleware
+    const userId = req.user.id; 
 
     try {
         const user = await User.findById(userId);

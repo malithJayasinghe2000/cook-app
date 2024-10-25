@@ -2,7 +2,7 @@
 const axios = require('axios');
 
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
-let validCategories = []; // Array to hold valid categories
+let validCategories = []; 
 
 // Fetch categories
 exports.getCategories = async (req, res) => {
@@ -26,7 +26,6 @@ exports.getCategories = async (req, res) => {
 exports.getRecipesByCategory = async (req, res) => {
     const { category } = req.params;
 
-    // Validate category dynamically
     if (!validCategories.includes(category)) {
         return res.status(400).json({
             success: false,
@@ -50,15 +49,14 @@ exports.getRecipesByCategory = async (req, res) => {
 };
 
 exports.getMealDetails = async (req, res) => {
-    const { idMeal } = req.params; // Get idMeal from the URL parameters
+    const { idMeal } = req.params; 
     try {
         const response = await axios.get(`${BASE_URL}/lookup.php?i=${idMeal}`);
         
-        // Check if the meal exists in the response
         if (response.data.meals) {
             res.status(200).json({
                 success: true,
-                data: response.data.meals[0], // Return the meal details
+                data: response.data.meals[0],
             });
         } else {
             res.status(404).json({

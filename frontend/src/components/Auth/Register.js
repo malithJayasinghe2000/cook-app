@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import '../../css/Register.css'; // Import CSS
+import '../../css/Register.css'; 
 import { useNavigate,Link } from 'react-router-dom';
 
 const Register = () => {
@@ -22,7 +22,9 @@ const Register = () => {
       firstName: Yup.string().required('First name is required'),
       lastName: Yup.string().required('Last name is required'),
       email: Yup.string().email('Invalid email address').required('Email is required'),
-      phoneNumber: Yup.string().required('Phone number is required'),
+      phoneNumber: Yup.string()
+        .matches(/^\d{10}$/, 'Invalid phone number')
+        .required('Phone number is required'),
       password: Yup.string()
         .min(6, 'Password must be at least 6 characters long')
         .required('Password is required'),

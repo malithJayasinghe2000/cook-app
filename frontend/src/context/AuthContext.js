@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
       if (response.data.success) {
         setIsAuthenticated(false);
         localStorage.removeItem('isAuthenticated'); 
+        window.location.reload();
       } else {
         console.error('Logout failed:', response.data.message);
       }

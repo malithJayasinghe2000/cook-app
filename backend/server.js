@@ -5,28 +5,26 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
 const mealRoutes = require('./routes/mealRoutes');
 const userRoutes = require('./routes/userRoutes');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors'); 
 
 dotenv.config();
 const app = express();
 
-// Connect to MongoDB
+// Connect to mongoDB
 connectDB();
 
-// Middleware
+// middleware
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
 app.use(express.json());
-app.use(cookieParser()); // Add this line
+app.use(cookieParser()); 
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/meals', mealRoutes);
 app.use('/api/user', userRoutes);
 
-// Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');

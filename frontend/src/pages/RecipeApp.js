@@ -53,7 +53,7 @@ const RecipeApp = () => {
 
   useEffect(() => {
     const fetchFavorites = async () => {
-      setLoading(true); // Start loading
+      setLoading(true); 
       try {
         const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/user/favorites`, {
           withCredentials: true,
@@ -62,7 +62,7 @@ const RecipeApp = () => {
       } catch (err) {
         console.error('Error fetching favorites:', err);
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false); 
       }
     };
     fetchFavorites();
@@ -83,7 +83,7 @@ const RecipeApp = () => {
   
     setTimeout(() => {
       heartButton.classList.remove('heart-animation');
-    }, 600); // Match the duration of the animation (0.6s)
+    }, 600); 
   
     if (isFavorite(idMeal)) {
       try {
@@ -160,7 +160,7 @@ const RecipeApp = () => {
                     className="heart-button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleFavorite(recipe.idMeal, e); // Pass the event here
+                      toggleFavorite(recipe.idMeal, e);
                     }}
                   >
                     {isFavorite(recipe.idMeal) ? <FaHeart color="red" /> : <FaRegHeart />}
@@ -182,7 +182,7 @@ const RecipeApp = () => {
         )}
       </div>
 
-      {/* Modal for displaying meal details */}
+      {/* Modal */}
       <Modal 
         isOpen={modalOpen} 
         onClose={() => setModalOpen(false)} 

@@ -111,7 +111,7 @@ const Favorites = () => {
               {favorites.map((favorite) => (
                 <div
                 key={favorite.idMeal}
-                id={`favorite-${favorite.idMeal}`}  // Unique id to target this element
+                id={`favorite-${favorite.idMeal}`}  
                 className="favorites-card"
                 onClick={() => handleCardClick(favorite.idMeal)}
               >
