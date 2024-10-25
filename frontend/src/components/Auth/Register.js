@@ -33,7 +33,7 @@ const Register = () => {
     onSubmit: async (values) => {
       setApiError(''); 
       try {
-        const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, values);
+        const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/register`, values);
         console.log(res.data);
 
         navigate('/login');
